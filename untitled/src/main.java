@@ -2,25 +2,50 @@ import java.util.Scanner;
 
 
 class main {
-    public static void main(String[] args){
-        /*Car myCar = new Car();
-        myCar.SetName("アコード");
-        myCar.SetTank(55);
-        myCar.SetGas(170);
-        System.out.println(); */
+    public static void main(String[] args) {
+        boolean menuFlg = true;
+        while(menuFlg) {
+            System.out.println("メニューを選んでください　1:燃費計算 2:車種管理 3:移動計算");
+            int fn = new java.util.Scanner(System.in).nextInt();
+            switch (fn) {
+                case 1:
+                    //燃費計算
+                    System.out.println("燃費計算をします");
+                    System.out.println(carInfo.Name() + "の今回走行の燃費は" + (carInfo.Trip() / carInfo.Gas()) + "km/Lです。");
+                case 2:
+                    //ToDo 車種管理
+                    System.out.println("車種管理をします");
+                    break;
+                case 3:
+                    //ToDo　移動計算
+                    System.out.println("移動計算をします");
+                    break;
+            }
+            System.out.println("初期メニューに戻りますか？ 1:Yes 2:No");
+            int mn = new java.util.Scanner(System.in).nextInt();
+            if(mn == 2){
+                menuFlg = false;
+            }
+        }
+    }
+}
+
+/* public static String Name(){
         System.out.println("車種を入力してください。");
         String carName = new java.util.Scanner(System.in).nextLine();
+        return carName;
+    }
 
+    public static int Gas(){
         System.out.println("ガソリンを入れた量/Lを入力してください。");
         int carGas = new Scanner(System.in).nextInt();
+        return carGas;
+    }
 
-        System.out.println("車種情報を入力しました。");
-        System.out.println("燃費を計算します");
-
+    public static int Trip(){
         System.out.println("今回の走行距離(km)を入力してください");
         int carTrip = new Scanner(System.in).nextInt();
-        System.out.println( carName +"の今回走行の燃費は" + (carTrip/carGas) + "km/Lです。");
-
+        return carTrip;
     }
 }
 /*
