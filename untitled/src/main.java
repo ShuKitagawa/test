@@ -5,25 +5,34 @@ class main {
     public static void main(String[] args) {
         boolean menuFlg = true;
         while(menuFlg) {
+            //メインメニュー
             System.out.println("メニューを選んでください　1:燃費計算 2:車種管理 3:移動計算");
             int fn = new java.util.Scanner(System.in).nextInt();
+
             switch (fn) {
                 case 1:
                     //燃費計算
                     System.out.println("燃費計算をします");
-                    System.out.println(carInfo.Name() + "の今回走行の燃費は" + (carInfo.Trip() / carInfo.Gas()) + "km/Lです。");
+                    carInfo.main();
+                    break;
                 case 2:
                     //ToDo 車種管理
                     System.out.println("車種管理をします");
+                    carManagement.main();
                     break;
                 case 3:
                     //ToDo　移動計算
                     System.out.println("移動計算をします");
+                    tripCalc.main();
                     break;
             }
+
             System.out.println("初期メニューに戻りますか？ 1:Yes 2:No");
             int mn = new java.util.Scanner(System.in).nextInt();
+
+            //終了処理
             if(mn == 2){
+                System.out.println("終了します");
                 menuFlg = false;
             }
         }
