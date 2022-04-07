@@ -21,10 +21,12 @@ class main {
                     carManagement.main();
                     break;
                 case 3:
-                    //ToDo　移動計算
+                    //移動計算
                     System.out.println("移動計算をします");
                     tripCalc.main();
                     break;
+                default:
+                    System.out.println("不正な値が入力されました");
             }
 
             System.out.println("初期メニューに戻りますか？ 1:Yes 2:No");
