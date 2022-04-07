@@ -1,55 +1,32 @@
+
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+
 public class dbCon {
-    public static void main(String[] args) {
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
 
-        try {
+	static final String URL = "jdbc:mysql://localhost/carmng";
+	static final String USERNAME = "root";
+	static final String PASSWORD = "pirooporoo";
 
-            con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost/test",
-                    "root",
-                    "pirooporoo"
-            );
+	public static void  sqlexcute(String sqlstate) {
 
-            pstmt = con.prepareStatement("select * from carmng.product;");
+		String carname = sqlstate;
 
-            rs = pstmt.executeQuery();
+		try (Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+				PreparedStatement preStatement = con.prepareStatement("insert into product (name) values(?);")) {
 
-            while (rs.next()) {
-                System.out.println(rs.getString("name"));
-                System.out.println(rs.getInt("age"));
-            }
+			preStatement.setString(1, carname);
+			int count = preStatement.executeUpdate();
+			
+		} catch (SQLException e) {
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+			e.printStackTrace();
+
+		}
+
+	}
+
 }
