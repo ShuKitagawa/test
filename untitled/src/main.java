@@ -1,6 +1,4 @@
 
-
-
 class main {
 	public static void main(String[] args) {
 		boolean menuFlg = true;
